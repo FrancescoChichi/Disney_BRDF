@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+    /*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 8/9.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 8/9.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    font-family: sans-serif; /* 1 */
+    -webkit-text-size-adjust: 100%; /* 2 */
+    -ms-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari 5, and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Correct font family set oddly in Safari 5 and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre-wrap;
+}
+
+/**
+ * Set consistent quote types.
+ */
+
+q {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9.
+ */
+
+img {
+    border: 0;
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari 5.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Correct font size not being inherited in all browsers.
+ * 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 2 */
+    margin: 0; /* 3 */
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700|Inconsolata:400,700);
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    width: 600px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 48px;
+    margin: 144px 0 24px 0;
+}
+
+h2 {
+    font-size: 28px;
+    line-height: 48px;
+    margin: 0 0 24px 0;
+}
+
+h3 {
+    font-size: 22px;
+    line-height: 24px;
+    margin: 48px 0 24px 0;
+}
+
+p, ul {
+    margin: 0 0 24px 0;
+}
+
+ul ul {
+    margin: 0 0 0 0;
+}
+
+pre {
+    margin: 0 0 24px 0;
+}
+
+code {
+    font-family: Inconsolata, monospace;
+}
+
+@media print {
+    body {
+        margin: 72px 72px;
+    }
+    @page {
+        margin: 48px 48px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <h1>Fundamentals of Computer Graphics – Final Projects Proposals</h1>
+<p>In this project you will expand on our free, and tiny, path tracer to either add new lighting effects, import complex models, or improve the underlying system implementation.</p>
+<p>The main difference between the projects and the homeworks is that we want the projects to not be guided by us to see how well you can move in a new topic and how well you can work independently. So compared to the homeworks, the projects are harder.</p>
+<p>Remember though that the project is not required to pass the class, so only choose it if you feel comfortable with the topic and you want to explore graphics more. If you do well in the projects, you might even continue down the line for a full thesis in graphics.</p>
+<p>Remember also that you can work on groups of up to two people. The limits on the number of people is to keep things fair with respect to people that prefer to work alone.</p>
+<h2>Project Modalities</h2>
+<ul>
+<li>Choose a topic from the list below.</li>
+<li>By the end of the lectures, please communicate whether you will try to do the project or prefer to finish with the homeworks using the form provided.</li>
+<li>You can hand in the project at any future "appello" up to and including the September 2018 one.</li>
+<li>Please be sure that the professor has a copy of the project materials 5 days before the exam so the project can be graded; submission will happen on submission links published on the Google Groups.</li>
+<li>For each project you have to hand in<ul>
+<li>a PDF detailing the features implemented, scenes, rendering times and parameters</li>
+<li>all your code that should either be modification of the libraries given or be contained in up to two files (.h/.cpp) pair</li>
+<li>input scenes in a format that the system can freely load</li>
+<li>at least one, impressive, output image rendered at high resolution and with no noise</li>
+<li>supporting images to show the various features</li>
+</ul>
+</li>
+<li>Please consider that we want to release your code and/or data as part of our library (obviously with written acknowledgments to you and only if you allows us). So in this case, I will also evaluate how well your code is written and whether it is worthy of release.</li>
+</ul>
+<h2>Policies</h2>
+<p>You have to start and modify the <a href="https://github.com/xelatihy/yocto-gl">Yocto/GL</a> version that will be release the last day of class. Since this is a heavily modified version, it will contain bugs and compilation problems that we cannot fix in time for class end. For small changes, please submit Issues with GitHub especially if you have a fix for it.</p>
+<p>You can use <em>any</em> open source code that you have to rights to and that can be integrated in Yocto/GL. Practically this means that the code you use and/or integrate as to be release under either the MIT, BSD or Apoache license; but not the GPL. You have to include the license of the code you use, even if you simply take inspiration from it, inside the files you give back to me. For 3D models, you can use any mode released under the Creative Common license. Please include the license file with the data.</p>
+<p>In particular, the main open source renderer avialable to you is <a href="https://github.com/mmp/pbrt-v3">pbrt</a> that also has a full book on it. You can use any code from it, but really you should <em>heavily</em> adapt it to Yocto/GL whose design is the opposite of pbrt, namely the code should stay very small and opinionated in not supporting all features but the coolest ones.</p>
+<p>If you use unauthorized code, or do not give proper credit to the work of others, I will promptly fail you from the class since this is a major copyright violation with legal implications; if in doubt ask the professor.</p>
+<p>If you work in two, either choose a "hard" project or significantly improve the quality of the produced images or the implementation.</p>
+<p>For projects it is not easy to say when it is "good enough" since one can always improve more the work; to make things easier for you and make sure that your final grade matches your expectation you can ask me to <em>quickly</em> review your submission by sending me one representative high-quality image and your code specifying exactly where to look.
+You can ask me appointments to discuss the projects which can happen in person or Skype, but please consider that I have limited bandwidth and cannot review your work constantly, nor I want to since that would not show your independence.</p>
+<p>It would make life easier if you work on a public Git repo so I can grab you latest stuff easily – include images there (I know it is not good, but hey gotta go easy way here). For final submission, I will open a link to a submission form roughly 10 days before any appello.</p>
+<h2>Project Ideas</h2>
+<p>I attempted to include different project ideas that vary from mostly system work to mostly math-y stuff. You are welcome to choose anything that you want. The rating is my guess and may be completely wrong depending on your background, strengths and inclinations. For me, the order in easy to hard, less fun to more fun. But that's just me.</p>
+<ol>
+<li>
+<p><strong>[Easy] Small scenes 1</strong>. Port most scenes from  <a href="https://benedikt-bitterli.me/resources/">here</a> to Yocto/GL. You can skip a couple if they really do not render, but they mostly should.
+All scenes should be save in OBJ and glTF, this means you likely have to write a parser.
+The images rendered in Yocto should match the once rendered in <a href="https://github.com/mmp/pbrt-v3">pbrt</a> or another of the supported renderers. This means that you should implement proper handling for glass and mirrors (deltas)</p>
+</li>
+<li>
+<p><strong>[Easy] Small scenes 2</strong>. Port most of the small scenes from  <a href="http://www.pbrt.org/gallery.html">here</a> to Yocto/GL. You can skip a couple if they really do not render, but they mostly should.</p>
+</li>
+<li>
+<p><strong>[Easy] Large ecosystem scene</strong>. Port both nature ecosystems scenes from <a href="http://www.pbrt.org/gallery.html">pbrt</a> in a way that all images match with that renderer. See above for notes (but no glass here). You code have to absolutely support instancing otherwise it is bad.</p>
+</li>
+<li>
+<p><strong>[Easy] Properly integrate embree in Yocto</strong>. Optionally switch intersection code inside the scene functions. The renderer should not know about this. Compiles and links on OsX, Windows and Linux.</p>
+</li>
+<li>
+<p><strong>[Easy] Implement rough reflection and transmission</strong> from <a href="https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf">here</a> with sampling from <a href="https://hal.inria.fr/hal-00996995/en">here</a>.</p>
+</li>
+<li>
+<p><strong>[Medium] Implement the Disney BRDF</strong> from <a href="https://disney-animation.s3.amazonaws.com/library/s2012_pbs_disney_brdf_notes_v2.pdf">here</a>. Please do not include the true subsurface scattering but only the fake term.</p>
+</li>
+<li>
+<p><strong>[Medium] Hair rendering with approximate scattering</strong> from <a href="https://disney-animation.s3.amazonaws.com/library/DualScatteringImplementation.pdf">here</a> with data from <a href="http://www.cemyuksel.com/">here</a>.</p>
+</li>
+<li>
+<p><strong>[Hard] Implement proper normal mapping</strong> from <a href="https://labs.unity.com/article/microfacet-based-normal-mapping-robust-monte-carlo-path-tracing">here</a>.</p>
+</li>
+<li>
+<p><strong>[Hard] Correct hair rendering</strong> from <a href="http://pbrt.org/hair.pdf">pbrt</a> with same data as above.</p>
+</li>
+<li>
+<p><strong>[Hard] Skin rendering with BSSRDF</strong>. Implement subsurface scattering with the BSSRDF presented in <a href="https://graphics.pixar.com/library/ApproxBSSRDF/paper.pdf">here</a>.</p>
+</li>
+<li>
+<p><strong>[Hard] Skin rendering with volumes</strong>. Implement the skin technique in <a href="https://graphics.pixar.com/library/PathTracedSubsurface/paper.pdf">here</a></p>
+</li>
+</ol>
+</body>
+</html>
