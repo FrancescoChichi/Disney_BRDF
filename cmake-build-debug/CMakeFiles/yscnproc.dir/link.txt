@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/yscnproc.dir/apps/yscnproc.cpp.o  -o ../bin/yscnproc ../bin/libyocto_gl.a /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libglfw.so /usr/lib/x86_64-linux-gnu/libGLEW.so -lpthread 

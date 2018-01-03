@@ -1,0 +1,11 @@
+/home/francesco/yocto-gl/build/CMakeFiles/edit_cache.dir
+/home/francesco/yocto-gl/build/CMakeFiles/rebuild_cache.dir
+/home/francesco/yocto-gl/build/CMakeFiles/yimview.dir
+/home/francesco/yocto-gl/build/CMakeFiles/ygltfview.dir
+/home/francesco/yocto-gl/build/CMakeFiles/ytrace.dir
+/home/francesco/yocto-gl/build/CMakeFiles/yscnproc.dir
+/home/francesco/yocto-gl/build/CMakeFiles/yocto_gl.dir
+/home/francesco/yocto-gl/build/CMakeFiles/ytestgen.dir
+/home/francesco/yocto-gl/build/CMakeFiles/yimproc.dir
+/home/francesco/yocto-gl/build/CMakeFiles/yitrace.dir
+/home/francesco/yocto-gl/build/CMakeFiles/yview.dir

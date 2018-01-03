@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/ytrace.dir/apps/ytrace.cpp.o  -o ../bin/ytrace ../bin/libyocto_gl.a /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libglfw.so /usr/lib/x86_64-linux-gnu/libGLEW.so -lpthread 

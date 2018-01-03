@@ -1,0 +1,275 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_86aee/fast"
+/usr/bin/make -f CMakeFiles/cmTC_86aee.dir/build.make CMakeFiles/cmTC_86aee.dir/build
+make[1]: Entering directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_86aee.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_86aee.dir/CheckSymbolExists.c.o   -c /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_86aee
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_86aee.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_86aee.dir/CheckSymbolExists.c.o  -o cmTC_86aee 
+CMakeFiles/cmTC_86aee.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_86aee.dir/build.make:97: recipe for target 'cmTC_86aee' failed
+make[1]: *** [cmTC_86aee] Error 1
+make[1]: Leaving directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_86aee/fast' failed
+make: *** [cmTC_86aee/fast] Error 2
+
+File /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_bb3a2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_bb3a2.dir/build.make CMakeFiles/cmTC_bb3a2.dir/build
+make[1]: Entering directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_bb3a2.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_bb3a2.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_bb3a2
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bb3a2.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_bb3a2.dir/CheckFunctionExists.c.o  -o cmTC_bb3a2 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_bb3a2.dir/build.make:97: recipe for target 'cmTC_bb3a2' failed
+make[1]: *** [cmTC_bb3a2] Error 1
+make[1]: Leaving directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_bb3a2/fast' failed
+make: *** [cmTC_bb3a2/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a8eaf/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a8eaf.dir/build.make CMakeFiles/cmTC_a8eaf.dir/build
+make[1]: Entering directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a8eaf.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_a8eaf.dir/CheckSymbolExists.c.o   -c /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_a8eaf
+/home/francesco/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a8eaf.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_a8eaf.dir/CheckSymbolExists.c.o  -o cmTC_a8eaf 
+CMakeFiles/cmTC_a8eaf.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_a8eaf.dir/build.make:97: recipe for target 'cmTC_a8eaf' failed
+make[1]: *** [cmTC_a8eaf] Error 1
+make[1]: Leaving directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a8eaf/fast' failed
+make: *** [cmTC_a8eaf/fast] Error 2
+
+File /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_410af/fast"
+/usr/bin/make -f CMakeFiles/cmTC_410af.dir/build.make CMakeFiles/cmTC_410af.dir/build
+make[1]: Entering directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_410af.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_410af.dir/CheckFunctionExists.c.o   -c /home/francesco/clion-2017.2.3/bin/cmake/share/cmake-3.8/Modules/CheckFunctionExists.c
+Linking C executable cmTC_410af
+/home/francesco/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_410af.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_410af.dir/CheckFunctionExists.c.o  -o cmTC_410af -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_410af.dir/build.make:97: recipe for target 'cmTC_410af' failed
+make[1]: *** [cmTC_410af] Error 1
+make[1]: Leaving directory '/home/francesco/Desktop/yocto-gl-master/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_410af/fast' failed
+make: *** [cmTC_410af/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ebe9a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ebe9a.dir/build.make CMakeFiles/cmTC_ebe9a.dir/build
+make[1]: Entering directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ebe9a.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_ebe9a.dir/CheckSymbolExists.c.o   -c /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_ebe9a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ebe9a.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_ebe9a.dir/CheckSymbolExists.c.o  -o cmTC_ebe9a 
+CMakeFiles/cmTC_ebe9a.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_ebe9a.dir/build.make:97: recipe for target 'cmTC_ebe9a' failed
+make[1]: *** [cmTC_ebe9a] Error 1
+make[1]: Leaving directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_ebe9a/fast' failed
+make: *** [cmTC_ebe9a/fast] Error 2
+
+File /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_4e533/fast"
+/usr/bin/make -f CMakeFiles/cmTC_4e533.dir/build.make CMakeFiles/cmTC_4e533.dir/build
+make[1]: Entering directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4e533.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_4e533.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_4e533
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4e533.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_4e533.dir/CheckFunctionExists.c.o  -o cmTC_4e533 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_4e533.dir/build.make:97: recipe for target 'cmTC_4e533' failed
+make[1]: *** [cmTC_4e533] Error 1
+make[1]: Leaving directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_4e533/fast' failed
+make: *** [cmTC_4e533/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_1eda2/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1eda2.dir/build.make CMakeFiles/cmTC_1eda2.dir/build
+make[1]: Entering directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1eda2.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_1eda2.dir/CheckSymbolExists.c.o   -c /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_1eda2
+/home/francesco/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1eda2.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_1eda2.dir/CheckSymbolExists.c.o  -o cmTC_1eda2 
+CMakeFiles/cmTC_1eda2.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_1eda2.dir/build.make:97: recipe for target 'cmTC_1eda2' failed
+make[1]: *** [cmTC_1eda2] Error 1
+make[1]: Leaving directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_1eda2/fast' failed
+make: *** [cmTC_1eda2/fast] Error 2
+
+File /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3ef2b/fast"
+/usr/bin/make -f CMakeFiles/cmTC_3ef2b.dir/build.make CMakeFiles/cmTC_3ef2b.dir/build
+make[1]: Entering directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3ef2b.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_3ef2b.dir/CheckFunctionExists.c.o   -c /home/francesco/clion-2017.2.3/bin/cmake/share/cmake-3.8/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3ef2b
+/home/francesco/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ef2b.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_3ef2b.dir/CheckFunctionExists.c.o  -o cmTC_3ef2b -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_3ef2b.dir/build.make:97: recipe for target 'cmTC_3ef2b' failed
+make[1]: *** [cmTC_3ef2b] Error 1
+make[1]: Leaving directory '/home/francesco/yocto-gl/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3ef2b/fast' failed
+make: *** [cmTC_3ef2b/fast] Error 2
+
+
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_09474/fast"
+/usr/bin/make -f CMakeFiles/cmTC_09474.dir/build.make CMakeFiles/cmTC_09474.dir/build
+make[1]: Entering directory '/home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_09474.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_09474.dir/CheckSymbolExists.c.o   -c /home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_09474
+/home/francesco/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_09474.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_09474.dir/CheckSymbolExists.c.o  -o cmTC_09474 
+CMakeFiles/cmTC_09474.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_09474.dir/build.make:97: recipe for target 'cmTC_09474' failed
+make[1]: *** [cmTC_09474] Error 1
+make[1]: Leaving directory '/home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_09474/fast' failed
+make: *** [cmTC_09474/fast] Error 2
+
+File /home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a9e52/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a9e52.dir/build.make CMakeFiles/cmTC_a9e52.dir/build
+make[1]: Entering directory '/home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a9e52.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a9e52.dir/CheckFunctionExists.c.o   -c /home/francesco/clion-2017.2.3/bin/cmake/share/cmake-3.8/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a9e52
+/home/francesco/clion-2017.2.3/bin/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9e52.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_a9e52.dir/CheckFunctionExists.c.o  -o cmTC_a9e52 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_a9e52.dir/build.make:97: recipe for target 'cmTC_a9e52' failed
+make[1]: *** [cmTC_a9e52] Error 1
+make[1]: Leaving directory '/home/francesco/Disney_BRDF/bin/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a9e52/fast' failed
+make: *** [cmTC_a9e52/fast] Error 2
+
+

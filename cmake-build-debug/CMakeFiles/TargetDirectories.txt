@@ -1,0 +1,12 @@
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/yocto_gl.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/ytestgen.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/yscnproc.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/ytrace.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/yimproc.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/yview.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/ygltfview.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/yitrace.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/yimview.dir
+/home/francesco/Disney_BRDF/cmake-build-debug/CMakeFiles/disneyBRDFyitrace.dir

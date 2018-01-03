@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/ygltfview.dir/apps/ygltfview.cpp.o CMakeFiles/ygltfview.dir/yocto/yocto_gltf.cpp.o  -o ../bin/ygltfview ../bin/libyocto_gl.a /usr/lib/x86_64-linux-gnu/libGL.so /usr/lib/x86_64-linux-gnu/libglfw.so /usr/lib/x86_64-linux-gnu/libGLEW.so -lpthread 
