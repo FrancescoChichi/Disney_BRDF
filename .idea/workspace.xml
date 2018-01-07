@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="yocto-gl" targetName="yimproc" />
+      <config projectName="yocto-gl" targetName="yocto_gl" />
+      <config projectName="yocto-gl" targetName="yscnproc" />
+      <config projectName="yocto-gl" targetName="yitrace" />
+      <config projectName="yocto-gl" targetName="yimview" />
+      <config projectName="yocto-gl" targetName="ytestgen" />
+      <config projectName="yocto-gl" targetName="ytrace" />
+      <config projectName="yocto-gl" targetName="disneyBRDFyitrace" />
+      <config projectName="yocto-gl" targetName="ygltfview" />
+      <config projectName="yocto-gl" targetName="yview" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b1c1bc3b-95e0-48f0-a542-5c17ac3a6978" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/francesco.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/disneyBRDFyitrace" afterPath="$PROJECT_DIR$/bin/disneyBRDFyitrace" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/libyocto_gl.a" afterPath="$PROJECT_DIR$/bin/libyocto_gl.a" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/yocto/yocto_gl.cpp" afterPath="$PROJECT_DIR$/yocto/yocto_gl.cpp" />
+    </list>
+    <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="disneyBRDFyitrace.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/disneyBRDFyitrace.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="201">
+              <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yocto_gl.cpp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/yocto/yocto_gl.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="920" column="40" lean-forward="true" selection-start-line="920" selection-start-column="40" selection-end-line="920" selection-end-column="40" />
+              <folding>
+                <element signature="e#38531#38702#0" expanded="true" />
+                <element signature="e#88525#88537#0" expanded="true" />
+                <element signature="e#104284#104296#0" expanded="true" />
+                <element signature="e#105527#105539#0" expanded="true" />
+                <element signature="e#105741#105753#0" expanded="true" />
+                <element signature="e#119614#119626#0" expanded="true" />
+                <element signature="e#122462#122474#0" expanded="true" />
+                <element signature="e#122782#122794#0" expanded="true" />
+                <element signature="e#123093#123105#0" expanded="true" />
+                <element signature="e#123533#123632#0" expanded="true" />
+                <element signature="e#149829#149841#0" expanded="true" />
+                <element signature="e#151637#151649#0" expanded="true" />
+                <element signature="e#151871#151883#0" expanded="true" />
+                <element signature="e#152120#152132#0" expanded="true" />
+                <element signature="e#152423#152586#0" expanded="true" />
+                <element signature="e#189595#189607#0" expanded="true" />
+                <element signature="e#189806#189818#0" expanded="true" />
+                <element signature="e#382344#382806#0" expanded="true" />
+                <element signature="e#424401#424453#0" expanded="true" />
+                <element signature="e#426819#427376#0" expanded="true" />
+                <element signature="e#448095#454822#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yocto_gl.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/yocto/yocto_gl.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-604">
+              <caret line="7823" column="21" lean-forward="false" selection-start-line="7823" selection-start-column="9" selection-end-line="7823" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>disney</find>
+      <find>fres</find>
+      <find>eval_ggx</find>
+      <find>bool din</find>
+      <find>basecolor</find>
+      <find>sheen</find>
+      <find>eval_brdfcos_disney</find>
+      <find>eval_brdfcos_</find>
+      <find>const trace_params&amp; params=</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/yocto/yocto_gl.h" />
+        <option value="$PROJECT_DIR$/yocto/yocto_gl.cpp" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="47" />
+    <option name="y" value="18" />
+    <option name="width" value="1697" />
+    <option name="height" value="1422" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>C/C++</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="yocto-gl" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="Disney_BRDF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="yocto-gl" type="dad4c3:CidrFilesViewHelper$MyProjectTreeStructure$1" />
+              <item name="Disney_BRDF" type="462c0819:PsiDirectoryNode" />
+              <item name="yocto" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.disneyBRDFyitrace">
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <envs />
+    </configuration>
+    <configuration name="disneyBRDFyitrace" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="$USER_HOME$/Desktop/tests/metals_al/metals_al.obj" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="disneyBRDFyitrace" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="disneyBRDFyitrace">
+      <envs />
+    </configuration>
+    <configuration name="ygltfview" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="ygltfview" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="ygltfview">
+      <envs />
+    </configuration>
+    <configuration name="yimproc" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="yimproc" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="yimproc">
+      <envs />
+    </configuration>
+    <configuration name="yimview" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="yimview" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="yimview">
+      <envs />
+    </configuration>
+    <configuration name="yitrace" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="yitrace" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="yitrace">
+      <envs />
+    </configuration>
+    <configuration name="yocto_gl" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="yocto_gl" CONFIG_NAME="Debug">
+      <envs />
+    </configuration>
+    <configuration name="yscnproc" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="yscnproc" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="yscnproc">
+      <envs />
+    </configuration>
+    <configuration name="ytestgen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="ytestgen" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="ytestgen">
+      <envs />
+    </configuration>
+    <configuration name="ytrace" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="ytrace" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="ytrace">
+      <envs />
+    </configuration>
+    <configuration name="yview" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="yocto-gl" TARGET_NAME="yview" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="yocto-gl" RUN_TARGET_NAME="yview">
+      <envs />
+    </configuration>
+    <list size="11">
+      <item index="0" class="java.lang.String" itemvalue="Application.Build All" />
+      <item index="1" class="java.lang.String" itemvalue="Application.disneyBRDFyitrace" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ygltfview" />
+      <item index="3" class="java.lang.String" itemvalue="Application.yimproc" />
+      <item index="4" class="java.lang.String" itemvalue="Application.yimview" />
+      <item index="5" class="java.lang.String" itemvalue="Application.yitrace" />
+      <item index="6" class="java.lang.String" itemvalue="Application.yocto_gl" />
+      <item index="7" class="java.lang.String" itemvalue="Application.yscnproc" />
+      <item index="8" class="java.lang.String" itemvalue="Application.ytestgen" />
+      <item index="9" class="java.lang.String" itemvalue="Application.ytrace" />
+      <item index="10" class="java.lang.String" itemvalue="Application.yview" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b1c1bc3b-95e0-48f0-a542-5c17ac3a6978" name="Default" comment="" />
+      <created>1515069338005</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1515069338005</updated>
+      <workItem from="1515069340026" duration="4054000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="4054000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="47" y="18" width="1697" height="1422" extended-state="4" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24985269" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295711" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24985269" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/apps/disneyBRDFyitrace.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="84" column="5" lean-forward="false" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yocto/yocto_gl.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-604">
+          <caret line="7823" column="21" lean-forward="false" selection-start-line="7823" selection-start-column="9" selection-end-line="7823" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yocto/yocto_gl.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="920" column="40" lean-forward="true" selection-start-line="920" selection-start-column="40" selection-end-line="920" selection-end-column="40" />
+          <folding>
+            <element signature="e#38531#38702#0" expanded="true" />
+            <element signature="e#88525#88537#0" expanded="true" />
+            <element signature="e#104284#104296#0" expanded="true" />
+            <element signature="e#105527#105539#0" expanded="true" />
+            <element signature="e#105741#105753#0" expanded="true" />
+            <element signature="e#119614#119626#0" expanded="true" />
+            <element signature="e#122462#122474#0" expanded="true" />
+            <element signature="e#122782#122794#0" expanded="true" />
+            <element signature="e#123093#123105#0" expanded="true" />
+            <element signature="e#123533#123632#0" expanded="true" />
+            <element signature="e#149829#149841#0" expanded="true" />
+            <element signature="e#151637#151649#0" expanded="true" />
+            <element signature="e#151871#151883#0" expanded="true" />
+            <element signature="e#152120#152132#0" expanded="true" />
+            <element signature="e#152423#152586#0" expanded="true" />
+            <element signature="e#189595#189607#0" expanded="true" />
+            <element signature="e#189806#189818#0" expanded="true" />
+            <element signature="e#382344#382806#0" expanded="true" />
+            <element signature="e#424401#424453#0" expanded="true" />
+            <element signature="e#426819#427376#0" expanded="true" />
+            <element signature="e#448095#454822#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
