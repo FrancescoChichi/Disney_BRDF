@@ -89,6 +89,14 @@ int main(int argc, char* argv[]) {
         parse_opt(parser, "--samples", "-s", "image samples", 256);
     app->trace_params_.parallel =
         !parse_flag(parser, "--no-parallel", "", "so not run in parallel");
+    //Disney parameters
+    app->trace_params_.d_constant =
+        parse_opt(parser, "--d_constant", "-Dc", "D constant", 1.0);
+    app->trace_params_.d_gamma =
+        parse_opt(parser, "--d_gamma", "-Dg", "D gamma", 2);
+    
+
+
     app->exposure =
         parse_opt(parser, "--exposure", "-e", "hdr image exposure", 0.0f);
     app->gamma = parse_opt(parser, "--gamma", "-g", "hdr image gamma", 2.2f);

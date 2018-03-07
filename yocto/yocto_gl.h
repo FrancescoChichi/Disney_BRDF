@@ -7868,8 +7868,8 @@ namespace ygl {
     float sheenTint = .0;
     float clearcoat = .0;
     float clearcoatGloss = .0;
-    float d_constant = 1.0f;
-    int d_gamma = 1;
+    float d_constant = .6f;
+    int d_gamma = 2;
   };
 
 /// Make image blocks

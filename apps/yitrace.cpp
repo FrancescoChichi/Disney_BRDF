@@ -113,6 +113,14 @@ void draw(gl_window* win) {
     edited += draw_camera_widget(win, "camera", app->scn, app->scam);
     edited += draw_value_widget(win, "update bvh", app->update_bvh);
     draw_value_widget(win, "fps", app->navigation_fps);
+
+  
+    //Disney stuff 
+    draw_value_widget(
+        win, "d_constant", app->trace_params_.d_constant, 0, 1, 0.1);
+    draw_value_widget(
+        win, "d_gamma", app->trace_params_.d_gamma, 1, 2, 1);
+
     draw_tonemap_widgets(win, "", app->exposure, app->gamma, app->filmic);
     edited +=
         draw_scene_widgets(win, "scene", app->scn, app->selection, {});
