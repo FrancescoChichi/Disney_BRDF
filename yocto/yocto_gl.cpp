@@ -922,8 +922,8 @@ namespace ygl {
 inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, bool disney = false, const trace_params& params=trace_params()) {
 
   if (disney){
-    auto FD90 = 0.5f + 2*cosw*cosw*params.roughness;
-    return ks/pif + (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f));
+    auto FD90 = 0.5f + 2*(cosw*cosw)*params.roughness;
+    return ks/pif + vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
 
   }
 
@@ -933,33 +933,45 @@ inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, bool disney = fal
 
 // Schlick approximation of Fresnel term weighted by roughness.
 // This is a hack, but works better than not doing it.
-    inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, float rs, bool disney = false, const trace_params& params=trace_params()) {
+    inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, float rs, bool disney = false, const trace_params& params = trace_params()) {
       auto fks = eval_fresnel_schlick(ks, cosw, disney, params);
       return lerp(ks, fks, rs);
     }
 
 // Evaluates the GGX distribution and geometric term
-    inline float eval_ggx(float rs, float ndh, float ndi, float ndo, bool disney = false) {
+    inline float eval_ggx(float rs, float ndh, float ndi, float ndo, bool disney = false, const trace_params& params = trace_params()) {
       // evaluate GGX
-
+      float d = 1.0f;
+      auto alpha2 = rs * rs;
+      auto di = (ndh * ndh) * (alpha2 - 1) + 1;
+      
+      /***
+        For our BRDF, we chose to have two fixed specular lobes, both using the GTR model. The primary
+        lobe uses γ = 2, and the secondary lobe uses γ = 1. The primary lobe represents the base material
+        and may be anisotropic and/or metallic. The secondary lobe represents a clearcoat layer overtop the
+        base material, and is thus always isotropic and non-metallic.
+      */
       if(disney){
-        return .0;
+        d = params.d_constant / pow(((alpha2 * (ndh*ndh))+(1 - (ndh*ndh))), 2); //γ = 2
+        alpha2 = pow((0.5f + params.roughness/2),2);         
       }
-      else{
-        auto alpha2 = rs * rs;
-        auto di = (ndh * ndh) * (alpha2 - 1) + 1;
-        auto d = alpha2 / (pif * di * di);
-#ifndef YGL_GGX_SMITH
+  
+      else
+        d = alpha2 / (pif * di * di);
+
+      
+      #ifndef YGL_GGX_SMITH
         auto lambda_o = (-1 + sqrt(1 + alpha2 * (1 - ndo * ndo) / (ndo * ndo))) / 2;
         auto lambda_i = (-1 + sqrt(1 + alpha2 * (1 - ndi * ndi) / (ndi * ndi))) / 2;
         auto g = 1 / (1 + lambda_o + lambda_i);
-#else
+      #else
         auto go = (2 * ndo) / (ndo + sqrt(alpha2 + (1 - alpha2) * ndo * ndo));
-      auto gi = (2 * ndi) / (ndi + sqrt(alpha2 + (1 - alpha2) * ndi * ndi));
-      auto g = go * gi;
-#endif
-        return d * g;
-      }
+        auto gi = (2 * ndi) / (ndi + sqrt(alpha2 + (1 - alpha2) * ndi * ndi));
+        auto g = go * gi;
+      #endif
+      
+      return d * g;
+    
     }
 
 // Evaluates the GGX pdf
@@ -1021,7 +1033,7 @@ inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, bool disney = fal
           // specular term (GGX)
           if (fr.ks != zero3f && ndi > 0 && ndo > 0 && ndh > 0 && fr.rs) {
             // microfacet term
-            auto dg = eval_ggx(fr.rs, ndh, ndi, ndo);
+            auto dg = eval_ggx(fr.rs, ndh, ndi, ndo, true, params);
 
             // handle fresnel
             auto odh = clamp(dot(wo, wh), 0.0f, 1.0f);

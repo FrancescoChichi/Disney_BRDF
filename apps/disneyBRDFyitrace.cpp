@@ -126,7 +126,10 @@ void draw(gl_window* win) {
         win, "clearcoat", app->trace_params_.clearcoat, 0, 1, 0.1);
     draw_value_widget(
         win, "clearcoatGloss", app->trace_params_.clearcoatGloss, 0, 1, 0.1);
-
+    draw_value_widget(
+        win, "d_constant", app->trace_params_.d_constant, 0, 1, 0.1);
+    draw_value_widget(
+        win, "gamma", app->trace_params_.gamma, 1, 20, 1);
 
     edited += draw_value_widget(
         win, "shader type", app->trace_params_.stype, trace_shader_names());
