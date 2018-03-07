@@ -1034,8 +1034,8 @@ vec3f eval_kd_disney(const vec3f& ks, float cosw, float rs) {
           auto ndo = dot(wn, wo), ndi = dot(wn, wi),
               ndh = clamp(dot(wh, wn), (float)-1, (float)1);
 
-          auto kd = zero3f;
-          pt.fr.kd = kd;//eval_kd_disney(fr.ks, ndo, fr.rs);
+          //auto kd = eval_kd_disney(fr.ks, ndo, fr.rs);
+          //pt.fr.kd = kd;//eval_kd_disney(fr.ks, ndo, fr.rs);
           
           // diffuse term
           if (fr.kd != zero3f && ndi > 0 && ndo > 0) {
