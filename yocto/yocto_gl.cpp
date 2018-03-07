@@ -919,30 +919,38 @@ namespace ygl {
     }
 
 // Schlick approximation of Fresnel term
-inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, bool disney = false, const trace_params& params=trace_params()) {
-
-  if (disney){
-    auto FD90 = 0.5f + 2*(cosw*cosw)*params.roughness;
-    return ks/pif + vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
-
-  }
-
+inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw) {
   return ks +
          (vec3f{1, 1, 1} - ks) * pow(clamp(1.0f - cosw, 0.0f, 1.0f), 5.0f);
+}
+
+// Schlick approximation of Fresnel term with disney brdf
+vec3f eval_kd_disney(const vec3f& ks, float cosw, float rs) {
+  auto FD90 = 0.5f + 2*(cosw*cosw)*rs;
+  return ks/pif + vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
+
 }
 
 // Schlick approximation of Fresnel term weighted by roughness.
 // This is a hack, but works better than not doing it.
     inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, float rs, bool disney = false, const trace_params& params = trace_params()) {
-      auto fks = eval_fresnel_schlick(ks, cosw, disney, params);
+//      ygl::vec3f fks;
+      /*if (disney)
+        fks = eval_fresnel_schlick_disney(ks, cosw, rs);
+      else*/
+      auto fks = eval_fresnel_schlick(ks, cosw);
+      
       return lerp(ks, fks, rs);
     }
 
 // Evaluates the GGX distribution and geometric term
     inline float eval_ggx(float rs, float ndh, float ndi, float ndo, bool disney = false, const trace_params& params = trace_params()) {
       // evaluate GGX
-      float d = 1.0f;
+      float d;
       auto alpha2 = rs * rs;
+      //std::cout<<"rs: "<<rs<<" r: "<<params.roughness<<std::endl;
+      alpha2 = pow((0.5f + rs/2),2);         
+
       auto di = (ndh * ndh) * (alpha2 - 1) + 1;
       
       /***
@@ -952,8 +960,8 @@ inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, bool disney = fal
         base material, and is thus always isotropic and non-metallic.
       */
       if(disney){
-        d = params.d_constant / pow(((alpha2 * (ndh*ndh))+(1 - (ndh*ndh))), 2); //γ = 2
-        alpha2 = pow((0.5f + params.roughness/2),2);         
+        d = params.d_constant / pow(((alpha2 * (ndh*ndh))+(1 - (ndh*ndh))), params.d_gamma); //γ = 2
+        //alpha2 = pow((0.5f + params.roughness/2),2);         
       }
   
       else
@@ -1006,6 +1014,7 @@ inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, bool disney = fal
     inline vec3f eval_brdfcos_disney(
         const point& pt, const vec3f& wi, const trace_params& params, bool delta = false) {
       // grab variables
+
       auto& fr = pt.fr;
       auto& wn = pt.frame.z;
       auto& wo = pt.wo;
@@ -1025,6 +1034,9 @@ inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, bool disney = fal
           auto ndo = dot(wn, wo), ndi = dot(wn, wi),
               ndh = clamp(dot(wh, wn), (float)-1, (float)1);
 
+          auto kd = zero3f;
+          pt.fr.kd = kd;//eval_kd_disney(fr.ks, ndo, fr.rs);
+          
           // diffuse term
           if (fr.kd != zero3f && ndi > 0 && ndo > 0) {
             brdfcos += fr.kd * ndi / pif;
