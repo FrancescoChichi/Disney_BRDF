@@ -269,6 +269,15 @@ int main(int argc, char* argv[]) {
   app->trace_params_.stype =
       parse_opt(parser, "--shader", "-S", "path estimator type",
                 trace_shader_names(), trace_shader_type::pathtrace);
+
+
+  //Disney parameters
+  app->trace_params_.d_constant =
+      parse_opt(parser, "--d_constant", "-Dc", "D constant", 0.6);
+  app->trace_params_.d_gamma =
+      parse_opt(parser, "--d_gamma", "-Dg", "D gamma", 2);
+
+      
   app->trace_params_.envmap_invisible =
       parse_flag(parser, "--envmap-invisible", "", "envmap invisible");
   app->trace_params_.shadow_notransmission = parse_flag(
@@ -301,6 +310,7 @@ int main(int argc, char* argv[]) {
     printf("%s\n", get_usage(parser).c_str());
     exit(1);
   }
+
 
   // setting up rendering
   log_info("loading scene {}", app->filename);

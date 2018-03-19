@@ -7858,7 +7858,7 @@ namespace ygl {
     int block_size = 32;
 
     ///disney BRDF paramters
-    float subsurface = .0;
+    /*float subsurface = .0;
     float metallic = .0;
     float specular = .0;
     float specularTint = .0;
@@ -7867,7 +7867,7 @@ namespace ygl {
     float sheen = .0;
     float sheenTint = .0;
     float clearcoat = .0;
-    float clearcoatGloss = .0;
+    float clearcoatGloss = .0;*/
     float d_constant = .6f;
     int d_gamma = 2;
   };
