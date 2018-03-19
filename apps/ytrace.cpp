@@ -91,7 +91,7 @@ int main(int argc, char* argv[]) {
         !parse_flag(parser, "--no-parallel", "", "so not run in parallel");
     //Disney parameters
     app->trace_params_.d_constant =
-        parse_opt(parser, "--d_constant", "-Dc", "D constant", 1.0);
+        parse_opt(parser, "--d_constant", "-Dc", "D constant", 0.6);
     app->trace_params_.d_gamma =
         parse_opt(parser, "--d_gamma", "-Dg", "D gamma", 2);
     
