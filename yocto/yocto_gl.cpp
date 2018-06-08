@@ -918,29 +918,19 @@ namespace ygl {
       return (rp + rs) / 2.0f;
     }
 
-// Schlick approximation of Fresnel term
-inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw) {
-  return ks +
-         (vec3f{1, 1, 1} - ks) * pow(clamp(1.0f - cosw, 0.0f, 1.0f), 5.0f);
-}
-
-// Schlick approximation of Fresnel term with disney brdf
-vec3f eval_kd_disney(const vec3f& ks, float cosw, float rs) {
-  auto FD90 = 0.5f + 2*(cosw*cosw)*rs;
-  return ks/pif + vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
-
-}
-
 // Schlick approximation of Fresnel term weighted by roughness.
 // This is a hack, but works better than not doing it.
-    inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, float rs, bool disney = false, const trace_params& params = trace_params()) {
+    inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, float rs = 0.0, bool disney = false, const trace_params& params = trace_params()) {
 //      ygl::vec3f fks;
-      /*if (disney)
-        fks = eval_fresnel_schlick_disney(ks, cosw, rs);
-      else*/
-      auto fks = eval_fresnel_schlick(ks, cosw);
-      
-      return lerp(ks, fks, rs);
+      if (disney){
+        auto FD90 = 0.5f + 2*(cosw*cosw)*rs;
+        auto fks_disney =  ks/pif + vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
+        return lerp(ks, fks_disney, rs);
+      }
+      else{
+        auto fks = ks + (vec3f{1, 1, 1} - ks) * pow(clamp(1.0f - cosw, 0.0f, 1.0f), 5.0f);
+        return lerp(ks, fks, rs);
+      }
     }
 
 // Evaluates the GGX distribution and geometric term
@@ -1034,9 +1024,6 @@ vec3f eval_kd_disney(const vec3f& ks, float cosw, float rs) {
           auto ndo = dot(wn, wo), ndi = dot(wn, wi),
               ndh = clamp(dot(wh, wn), (float)-1, (float)1);
 
-          //auto kd = eval_kd_disney(fr.ks, ndo, fr.rs);
-          //pt.fr.kd = kd;//eval_kd_disney(fr.ks, ndo, fr.rs);
-          
           // diffuse term
           if (fr.kd != zero3f && ndi > 0 && ndo > 0) {
             brdfcos += fr.kd * ndi / pif;
