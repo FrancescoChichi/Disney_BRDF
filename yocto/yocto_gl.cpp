@@ -918,31 +918,24 @@ namespace ygl {
       return (rp + rs) / 2.0f;
     }
 
+    inline vec3f eval_diffuse_disney(const vec3f& kd, float cosw, float rs = 0.0){
+      auto FD90 = 0.5f + 2*(cosw*cosw)*rs;// ks/pif +
+      auto fks_disney = kd/pif * vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
+      return fks_disney;
+    }
 // Schlick approximation of Fresnel term weighted by roughness.
 // This is a hack, but works better than not doing it.
-    inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, float rs = 0.0, bool disney = false, const trace_params& params = trace_params()) {
-//      ygl::vec3f fks;
-      if (disney){
-        auto FD90 = 0.5f + 2*(cosw*cosw)*rs;
-        auto fks_disney =  ks/pif + vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
-        return lerp(ks, fks_disney, rs);
-      }
-      else{
-        auto fks = ks + (vec3f{1, 1, 1} - ks) * pow(clamp(1.0f - cosw, 0.0f, 1.0f), 5.0f);
-        return lerp(ks, fks, rs);
-      }
+    inline vec3f eval_fresnel_schlick(const vec3f& ks, float cosw, float rs = 0.0) {
+      auto fks = ks + (vec3f{1, 1, 1} - ks) * pow(clamp(1.0f - cosw, 0.0f, 1.0f), 5.0f);
+      return lerp(ks, fks, rs);
     }
 
 // Evaluates the GGX distribution and geometric term
     inline float eval_ggx(float rs, float ndh, float ndi, float ndo, bool disney = false, const trace_params& params = trace_params()) {
       // evaluate GGX
       float d;
-      auto alpha2 = rs * rs;
-      //std::cout<<"rs: "<<rs<<" r: "<<params.roughness<<std::endl;
-      alpha2 = pow((0.5f + rs/2),2);         
+      double alpha2;
 
-      auto di = (ndh * ndh) * (alpha2 - 1) + 1;
-      
       /***
         For our BRDF, we chose to have two fixed specular lobes, both using the GTR model. The primary
         lobe uses γ = 2, and the secondary lobe uses γ = 1. The primary lobe represents the base material
@@ -950,14 +943,15 @@ namespace ygl {
         base material, and is thus always isotropic and non-metallic.
       */
       if(disney){
+        alpha2 = pow((0.5f + rs/2),2); //specular G
         d = params.d_constant / pow(((alpha2 * (ndh*ndh))+(1 - (ndh*ndh))), params.d_gamma); //γ = 2
-        //alpha2 = pow((0.5f + params.roughness/2),2);         
       }
-  
-      else
+      else{
+        alpha2 = rs * rs;
+        auto di = (ndh * ndh) * (alpha2 - 1) + 1;
         d = alpha2 / (pif * di * di);
+      }
 
-      
       #ifndef YGL_GGX_SMITH
         auto lambda_o = (-1 + sqrt(1 + alpha2 * (1 - ndo * ndo) / (ndo * ndo))) / 2;
         auto lambda_i = (-1 + sqrt(1 + alpha2 * (1 - ndi * ndi) / (ndi * ndi))) / 2;
@@ -1008,7 +1002,6 @@ namespace ygl {
       auto& fr = pt.fr;
       auto& wn = pt.frame.z;
       auto& wo = pt.wo;
-
       // exit if not needed
       if (!fr) return zero3f;
 
@@ -1026,7 +1019,8 @@ namespace ygl {
 
           // diffuse term
           if (fr.kd != zero3f && ndi > 0 && ndo > 0) {
-            brdfcos += fr.kd * ndi / pif;
+            auto odh = clamp(dot(wo, wh), 0.0f, 1.0f);
+            brdfcos += eval_diffuse_disney(fr.kd * ndi, odh, fr.rs);;
           }
 
           // specular term (GGX)
@@ -1036,16 +1030,16 @@ namespace ygl {
 
             // handle fresnel
             auto odh = clamp(dot(wo, wh), 0.0f, 1.0f);
-            auto ks = eval_fresnel_schlick(fr.ks, odh, fr.rs, true, params);
-
+            auto ks = eval_fresnel_schlick(fr.ks, odh, fr.rs);
             // sum up
-            brdfcos += ks * ndi * dg / (4 * ndi * ndo); ///f(l,v)
+            brdfcos += ks * ndi * dg / (4 * ndi * ndo);
           }
 
           // specular term (mirror)
           if (fr.ks != zero3f && ndi > 0 && ndo > 0 && !fr.rs && delta) {
             // handle fresnel
-            auto ks = eval_fresnel_schlick(fr.ks, ndo, fr.rs, true, params);
+            //auto ks = eval_fresnel_schlick(fr.ks, ndo, fr.rs, true, params);
+            auto ks = eval_fresnel_schlick(fr.ks, ndo, fr.rs);
 
             // sum up
             brdfcos += ks;
@@ -1053,7 +1047,8 @@ namespace ygl {
 
           // transmission hack
           if (fr.kt != zero3f && wo == -wi) brdfcos += fr.kt;
-        } break;
+        }
+        break;
           // hair (Kajiya-Kay)
         case brdf_type::kajiya_kay: {
           // compute wh
@@ -1091,7 +1086,8 @@ namespace ygl {
 
           // transmission hack
           if (fr.kt != zero3f && wo == -wi) brdfcos += fr.kt;
-        } break;
+        }
+        break;
         default: assert(false); break;
       }
 
