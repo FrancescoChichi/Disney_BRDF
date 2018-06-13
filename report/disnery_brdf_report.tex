@@ -5,6 +5,9 @@
 \usepackage{geometry} 
 \usepackage{graphicx}% http://ctan.org/pkg/graphicx
 \usepackage{array}% http://ctan.org/pkg/array
+\usepackage{amsmath}
+\usepackage{empheq}
+
 \geometry{a4paper} 
 
 \vspace{2cm}
@@ -26,7 +29,9 @@ The bidirectional reflectance distribution function is a function $ f(x,i,o) $ t
 differential incident irradiance. 
 In simple terms, the BRDF define the probability that a photon coming from a direction \textit{i} is reflected in a direction \textit{r}, after the collision with an opaque surface.
 We can so define it as \cite{slide}:
-$f(x,i,o)=\frac{\delta L_r(x,o)}{\delta E_i(x,i)} = \frac{\delta L_r(x,o)}{L_i(x,i)(n_x\cdot i) \delta \omega_i} $
+\begin{align*}
+	f(x,i,o)=\frac{\delta L_r(x,o)}{\delta E_i(x,i)} = \frac{\delta L_r(x,o)}{L_i(x,i)(n_x\cdot i) \delta \omega_i} 
+\end{align*}
 
 \begin{figure} [ht]
 	\centering
@@ -47,8 +52,10 @@ A physically based specular BRDF is based on micro-facet theory, which describe 
 
 So, the BRDF is essentially the "average" value of all these reflection events among all the micro-facets.
 The microfacet reflection is then the normalized product of three terms:
-$f_r(i,o)=\frac{F(i,h)D(h)G(h,i,o)}{4|n\cdot i||n\cdot o|}$\\
-$h= \frac{i+o}{|i+o|}$ \\
+\begin{align*}
+	f_r(i,o)&=\frac{F(i,h)D(h)G(h,i,o)}{4|n\cdot i||n\cdot o|}\\
+	h&= \frac{i+o}{|i+o|}
+\end{align*}
 Where F is the fresnel term, that take accounts for difference at grazing angle, the microfacet distribution D describes the statistical distribution of microfacets in a surface and the shadow-masking term G, that corrects for facets not visible from light or from the point of view (fig \ref{fig:visible})
 
 \begin{figure}[ht]
@@ -63,21 +70,45 @@ Where F is the fresnel term, that take accounts for difference at grazing angle,
 The Disney company studied and developed a custom BRDF, in order to increase the
 richness of all of their materials while making lighting responses more consistent between materials and
 environments and also wanted to improve artist productivity through the use of simplified controls.\\
-In graphics, one of the most diffuse model for represent the Fresnel reflection $ (k_r) $ and transmission $ (k_t = 1 - k_r) $ is the Schlick's approximation:
-$ k_r = k_s^0 + (1 - k_s^0)(1 - | n\cdot i|)^5$.
-This term is used in the Lambert diffuse model $ diffuse + \frac{D(\theta_h)F(\theta_d)G(\theta_l,\theta_v)}{4cos\theta_lcos\theta_v} $, which give a good physical representation of the scene.
-The problem, for the Disney company, was that this model is often too dark on the edges, and adding a Fresnel factor to make it more physically plausible only makes it darker.
-The model developed aims to increase the refraction at gazing angles, the angle between the tangent to the surface and the outgoing ray, when the light enters and exits the sides of micro-facet surfaces.
-The resultin diffuse model is the following:\\\\
-$ \frac{baseColor}{\pi} (1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} -1)(1 - cos\theta_v)^5)$\\\\
-where  $F_{D90} = 0.5 + 2cos\theta_d^2$ \textit{roughness}\\\\
-\subsection{Nomenclature}
+They uses the Lambert diffuse model, which give a good physical representation of the scene, but reshaping the component of this equation.\\\\
+Lambert model: 
+\begin{align*}
+ f(l,v) &= diffuse + \frac{D(\theta_h)F(\theta_d)G(\theta_l,\theta_v)}{4cos\theta_lcos\theta_v}\\
+\end{align*}
+Where $\theta_l$ and $\theta_v$ are the angles of incidence of the light and view vectors, \textit{l} and \textit{v}, with respect to the normal.
+$\theta_h$ is the angle between the normal and the half-vector $h = \frac{l+v}{|l+v|} $, and $\theta_d$ is the "difference" angle between \textit{l} and \textit{h}, or symmetricallly between \textit{v} and \textit{h}.
 
 \subsection{Diffuse model}
+Diffuse reflectance represents light that is refracted into the surface, scattered, partially absorbed,
+and re-emitted. Given that some of the light is absorbed, the diffuse response will be tinted with the
+surface color, and any portion of a non-metallic material that is tinted can be considered to be diffuse.\\\\
+The problem, for the Disney company, was that this model is often too dark on the edges, and adding a Fresnel factor to make it more physically plausible only makes it darker.\\
+The model developed aims to increase the refraction at gazing angles, the angle between the tangent to the surface and the outgoing ray, when the light enters and exits the sides of micro-facet surfaces.
 
-The resulting diffuse Fresnel have a redocted incident diffuse reflectance by 0.5 at gazing angles for smooth surfaces and an increased response by up to 2.5 for the rough ones.
+The modified diffuse model is the following:\\\\
+\begin{align*}
+ \frac{baseColor}{\pi} (1 + (F_{D90} - 1)(1 - cos\theta_l)^5)(1 + (F_{D90} -1)(1 - cos\theta_v)^5)\\\\
+\end{align*}
+where  $F_{D90} = 0.5 + 2cos\theta_d^2$ \textit{roughness}\\\\
+
+
+The resulting model have a redocted incident diffuse reflectance by 0.5 at gazing angles for smooth surfaces and an increased response by up to 2.5 for the rough ones.
 \subsection{Specular D}
+The most popular models is the GGX, wich is equivalent to the Trowbridge-Reitz (1975) one ($D_{TR}$). 
+However, this distribution still does not have a long enough tail for many materials.
+One of the other distributions, from Berry (1923), has a very similar
+form but with an exponent of 1 instead of 2 resulting in an even longer tail. This suggests a more general
+distribution with a variable exponent, introduced here and dubbed Generalized-Trowbridge-Reitz, or
+GTR:
+\begin{align*}
+  D_{Berry} &= c/(\alpha^2 cos^2\theta_h + sin^2\theta_h) \\
+  D_{TR} &= c/(\alpha^2 cos^2\theta_h + sin^2\theta_h)^2 \\
+  D_{GTR} &= c/(\alpha^2 cos^2\theta_h + sin^2\theta_h)^\gamma
+\end{align*}
+ In each of these distributions, $\textit{c}$ is a scaling constant, $\alpha$ is a roughness parameter with values between 0 (a perfectly smooth distribution) and in 1 (a perfectly rough).
 \subsection{Specular F}
+In graphics, one of the most diffuse model for represent the Fresnel reflection $ (k_r) $ and transmission $ (k_t = 1 - k_r) $ is the Schlick's approximation:
+$ k_r = k_s^0 + (1 - k_s^0)(1 - | n\cdot i|)^5$.
 \subsection{Specular G}
 \subsection{yocto-gl Implementation}
 

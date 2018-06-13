@@ -154,6 +154,13 @@ void draw(gl_window* win) {
         draw_label_widget(win, "b", pl.z);
         draw_label_widget(win, "a", pl.w);
     }
+    string imfilename = img->filename.substr(0,img->filename.size()-4).append(".jpg");
+    auto ldr = tonemap_image(img->hdr, app->exposure, app->gamma, app->filmic);
+    save_image4b(imfilename, ldr);
+    clear_window(win);
+    delete win;
+
+
     end_widgets(win);
 
     swap_buffers(win);
