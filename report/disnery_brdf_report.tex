@@ -7,6 +7,7 @@
 \usepackage{array}% http://ctan.org/pkg/array
 \usepackage{amsmath}
 \usepackage{empheq}
+\usepackage{float}
 
 \geometry{a4paper} 
 
@@ -20,8 +21,11 @@
 \begin{document}
 \maketitle
 \graphicspath{{img/}}
+\tableofcontents
+
 \section{Introduction}
-	This project aims to implement the \textbf{Bidirectional Reflectance Distribution Function} developed by the Disney company. 
+	The main task of this project is to implement the \textbf{Bidirectional Reflectance Distribution Function} developed by the Disney company, without the subsurface scattering.\\ 
+	The language chosen for development is c++, with the help of the library \textbf{Yocto/GL} (\textit{https://github.com/xelatihy/yocto-gl}).
 
 \newpage
 \section{Bidirectional reflectance distribution function (BRDF)}
@@ -33,7 +37,7 @@ We can so define it as \cite{slide}:
 	f(x,i,o)=\frac{\delta L_r(x,o)}{\delta E_i(x,i)} = \frac{\delta L_r(x,o)}{L_i(x,i)(n_x\cdot i) \delta \omega_i} 
 \end{align*}
 
-\begin{figure} [ht]
+\begin{figure} [H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{img/reflect}
 	\caption{A graphical example of the photon's reflection on an opaque surface.}
@@ -42,7 +46,7 @@ We can so define it as \cite{slide}:
 
 A physically based specular BRDF is based on micro-facet theory, which describe a surface is composed of many micro-facets and each micro-facet will only reflect light in a single direction according to their normal(m) (figure \ref{fig:microfacet}) \cite{slide,microfacet} 
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{img/microfacet}
 	\includegraphics[width=0.5\linewidth]{img/microfacet2}
@@ -58,7 +62,7 @@ The microfacet reflection is then the normalized product of three terms:
 \end{align*}
 Where F is the fresnel term, that take accounts for difference at grazing angle, the microfacet distribution D describes the statistical distribution of microfacets in a surface and the shadow-masking term G, that corrects for facets not visible from light or from the point of view (fig \ref{fig:visible})
 
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\linewidth]{img/visible}
 	\caption{Example of the microfacet surface visibility.}
@@ -106,7 +110,7 @@ GTR:
   D_{GTR} &= c/(\alpha^2 cos^2\theta_h + sin^2\theta_h)^\gamma
 \end{align*}
  In each of these distributions, $\textit{c}$ is a scaling constant, $\alpha$ is a roughness parameter with values between 0 (a perfectly smooth distribution) and in 1 (a perfectly rough).\\
-The $\gamma$ value have 2 fixet value: $\gamma = 2$ for the metallic material and $\gamma = 1$ for the non-metallic one.\\
+The $\gamma$ value have 2 fixet value, one for each lobe: $\gamma = 2$ for the metallic material and $\gamma = 1$ for the non-metallic one.\\
 For roughness, the $\alpha$ was remapped to the $roughness^2$, in order to achieve more intuitive value to represent shiny materials.
 
 \subsection{Specular F}
@@ -123,52 +127,42 @@ So, the new value becomes:
 \begin{align*}
 	\alpha_g = (0.5 + roughness/2)^2
 \end{align*}
-\subsection{Yocto-GL Implementation}
-The Yocto-GL is implemented as a two file library: \textit{yocto\_gl.h} and \textit{yocto\_gl.cpp}.
+\subsection{Yocto/GL Implementation}
+Yocto/GL is a collection utilities for building physically-based graphics algorithms implemented as a two-file library: \textit{yocto\_gl.h} and \textit{yocto\_gl.cpp}.\\
 This project has been developed as an extension of this library with the addition of the disney path tracer.\\
-In order to preserve the user interface provided by this library, two application concerning the path tracing, \textit{ytrace.cpp} and \textit{yitrace.cpp}, have been modified, so that the user can choose to use the path tracer using the disney BRDF only changin the shader parameter to \textit{path\_disney}.\\
-Other two parameters were added, respectively the \textit{d\_gamma} and the \textit{d\_constant}, in order to easily manipulate this value for the specular D component.
+In order to preserve the usability of the library, the two application concerning the path tracing, \textit{ytrace.cpp} and \textit{yitrace.cpp}, have been modified, so as to allow the users to choose wich path tracer use. To use the disney BRDF, they have only to change the shader parameter to \textit{path\_disney}.\\
+Other two parameters were added, respectively the \textit{d\_gamma} and the \textit{d\_constant}, in order to easily manipulate this value for the specular D component.\\
 
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c |}
-    \hline
-    normal & const 0.005 gamma 1 \\ \hline
-    \begin{minipage}{.455\textwidth}
-      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.455\textwidth}
-      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl_disney_dg1_dc005.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}\\
-  \begin{tabular}{ | c | c |}
-    \hline
-    const 0.03 gamma 1 & const 0.005 gamma 2 \\ \hline
-    \begin{minipage}{.455\textwidth}
-      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.455\textwidth}
-      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl_disney_dc005_dg2.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-   \caption{\textit{basic\_pl} object rendered with the basic path tracer and with the one of Disney}\label{tbl:myLboro}
-\end{table}
+In the following figures we can see three examples images that show the effects of the Disney BRDF on a basic scene taken from the Yocto/GL objects. 
+Between the figure \ref{fig:105} and \ref{fig:205}, we can see the different results obtained changing the gamma exponent in the GGX computation, in particular in the specular D calculus, from a non metallic ($\gamma = 1$) to a metallic one ($\gamma = 2$).\\
+comparing \ref{fig:105} and \ref{fig:103} isntead, we can se that augmenting the constant numerator in the specular D computation, the GGX augment, and therefore alse the whole BRDF value, therefore the reflection of the photons is more "probable".
 
 
-
-\section{Conclusions}
-
-
-\section{Other libraries}
-\begin{itemize}
-	\item \textbf{yocto-gl:}
-		Yocto/GL is a collection utilities for building physically-based graphics algorithms implemented as a two-file library, and released under the MIT license.
-		
-\end{itemize}
+\newpage
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.17]{img/obj/basic_pl/basic_pl.jpg}
+	\caption{\textit{basic\_pl} object rendered with the basic path tracer.}
+	\label{fig:basic}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.17]{img/obj/basic_pl/basic_pl_disney_dg1_dc005.jpg}
+	\caption{\textit{basic\_pl} object rendered with Disney path tracer, with gamma=1 and constant parameter=0.005.}
+	\label{fig:105}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.17]{img/obj/basic_pl/basic_pl_disney_dc03_dg1.jpg}
+	\caption{\textit{basic\_pl} object rendered with Disney path tracer, with gamma=1 and constant parameter=0.03.}
+	\label{fig:103}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.17]{img/obj/basic_pl/basic_pl_disney_dc005_dg2.jpg}
+	\caption{\textit{basic\_pl} object rendered with Disney path tracer, with gamma=2 and constant parameter=0.005.}
+	\label{fig:205}
+\end{figure}
 
 \begin{thebibliography}{9}
 	\bibitem{disney} 
@@ -181,10 +175,7 @@ Other two parameters were added, respectively the \textit{d\_gamma} and the \tex
 
 	\bibitem{microfacet} 
 	Microfacet BRDF. 
-	\textit{http://simonstechblog.blogspot.it/2011/12/microfacet-brdf.html}
-	
-	
-	
+	\textit{http://simonstechblog.blogspot.it/2011/12/microfacet-brdf.html}	
 \end{thebibliography}
 
 

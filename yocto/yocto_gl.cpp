@@ -935,20 +935,13 @@ namespace ygl {
       // evaluate GGX
       float d;
       double alpha2 = rs * rs;
-      /***
-        For our BRDF, we chose to have two fixed specular lobes, both using the GTR model. The primary
-        lobe uses γ = 2, and the secondary lobe uses γ = 1. The primary lobe represents the base material
-        and may be anisotropic and/or metallic. The secondary lobe represents a clearcoat layer overtop the
-        base material, and is thus always isotropic and non-metallic.
-      */
       if(disney){
-        d = params.d_constant / pow(((alpha2 * (ndh*ndh))+(1 - (ndh*ndh))), params.d_gamma); //γ = 2
+        d = static_cast<float>(params.d_constant / pow(((alpha2 * (ndh * ndh)) + (1 - (ndh * ndh))), params.d_gamma));
         alpha2 = pow((0.5f + rs/2),2); //specular G
       }
       else{
-        //alpha2 = rs * rs;
         auto di = (ndh * ndh) * (alpha2 - 1) + 1;
-        d = alpha2 / (pif * di * di);
+        d = static_cast<float>(alpha2 / (pif * di * di));
       }
 
       #ifndef YGL_GGX_SMITH
@@ -961,7 +954,7 @@ namespace ygl {
         auto g = go * gi;
       #endif
       
-      return d * g;
+      return static_cast<float>(d * g);
     
     }
 
