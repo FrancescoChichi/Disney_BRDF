@@ -105,386 +105,62 @@ GTR:
   D_{TR} &= c/(\alpha^2 cos^2\theta_h + sin^2\theta_h)^2 \\
   D_{GTR} &= c/(\alpha^2 cos^2\theta_h + sin^2\theta_h)^\gamma
 \end{align*}
- In each of these distributions, $\textit{c}$ is a scaling constant, $\alpha$ is a roughness parameter with values between 0 (a perfectly smooth distribution) and in 1 (a perfectly rough).
+ In each of these distributions, $\textit{c}$ is a scaling constant, $\alpha$ is a roughness parameter with values between 0 (a perfectly smooth distribution) and in 1 (a perfectly rough).\\
+The $\gamma$ value have 2 fixet value: $\gamma = 2$ for the metallic material and $\gamma = 1$ for the non-metallic one.\\
+For roughness, the $\alpha$ was remapped to the $roughness^2$, in order to achieve more intuitive value to represent shiny materials.
+
 \subsection{Specular F}
 In graphics, one of the most diffuse model for represent the Fresnel reflection $ (k_r) $ and transmission $ (k_t = 1 - k_r) $ is the Schlick's approximation:
-$ k_r = k_s^0 + (1 - k_s^0)(1 - | n\cdot i|)^5$.
+\begin{align*}
+	k_r = k_s^0 + (1 - k_s^0)(1 - cos\theta_d)^5
+\end{align*}
+Where $k_s^0$ represents the specular reflectance at nominal incidance.
+This approximated model has not been changed by Disney.
 \subsection{Specular G}
-\subsection{yocto-gl Implementation}
+For the G component, is used a GGX, with only one difference: in order to reduce the
+extreme gain for shiny surfaces, the $\alpha_g$ value was linearly scaled from the [0,1] range to a reduced one, [0.5,1].
+So, the new value becomes:
+\begin{align*}
+	\alpha_g = (0.5 + roughness/2)^2
+\end{align*}
+\subsection{Yocto-GL Implementation}
+The Yocto-GL is implemented as a two file library: \textit{yocto\_gl.h} and \textit{yocto\_gl.cpp}.
+This project has been developed as an extension of this library with the addition of the disney path tracer.\\
+In order to preserve the user interface provided by this library, two application concerning the path tracing, \textit{ytrace.cpp} and \textit{yitrace.cpp}, have been modified, so that the user can choose to use the path tracer using the disney BRDF only changin the shader parameter to \textit{path\_disney}.\\
+Other two parameters were added, respectively the \textit{d\_gamma} and the \textit{d\_constant}, in order to easily manipulate this value for the specular D component.
 
 \begin{table}[ht]
   \centering
-  \begin{tabular}{ | c | c | c |}
+  \begin{tabular}{ | c | c |}
     \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/basic_pl/basic_pl.jpg}
+    normal & const 0.005 gamma 1 \\ \hline
+    \begin{minipage}{.455\textwidth}
+      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl.jpg}
     \end{minipage}
     &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/basic_pl/basic_pl_disney.jpg}
+    \begin{minipage}{.455\textwidth}
+      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl_disney_dg1_dc005.jpg}
     \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/basic_pl/basic_pl_disney_dc03.jpg}
+    \\ \hline
+  \end{tabular}\\
+  \begin{tabular}{ | c | c |}
+    \hline
+    const 0.03 gamma 1 & const 0.005 gamma 2 \\ \hline
+    \begin{minipage}{.455\textwidth}
+      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl_disney_dc03_dg1.jpg}
+    \end{minipage}
+    &
+    \begin{minipage}{.455\textwidth}
+      \includegraphics[scale=0.15]{img/obj/basic_pl/basic_pl_disney_dc005_dg2.jpg}
     \end{minipage}
     \\ \hline
   \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/basic_pl/basic_pl_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/basic_pl/basic_pl_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{basic\_pl} object rendered with the basic path tracer and with the one of Disney}\label{tbl:myLboro}
+   \caption{\textit{basic\_pl} object rendered with the basic path tracer and with the one of Disney}\label{tbl:myLboro}
 \end{table}
 
 
 
 \section{Conclusions}
-\section{Sperimental results}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_al/metals_al.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_al/metals_al_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_al/metals_al_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_al/metals_al_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_al/metals_al_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{metals\_al}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_el/metals_el.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_el/metals_el_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_el/metals_el_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_el/metals_el_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/metals_el/metals_el_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{metals\_pl}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/normalmap_pl/normalmap_pl.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/normalmap_pl/normalmap_pl_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/normalmap_pl/normalmap_pl_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/normalmap_pl/normalmap_pl_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/normalmap_pl/normalmap_pl_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{normalmap\_pl}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_al/plastics_al.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_al/plastics_al_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_al/plastics_al_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_al/plastics_al_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_al/plastics_al_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{plastics\_al}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_el/plastics_el.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_el/plastics_el_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_el/plastics_el_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_el/plastics_el_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/plastics_el/plastics_el_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{plastics\_el}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_al/simple_al.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_al/simple_al_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_al/simple_al_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_al/simple_al_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_al/simple_al_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{simple\_al}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_el/simple_el.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_el/simple_el_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_el/simple_el_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_el/simple_el_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_el/simple_el_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{simple\_el}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_pl/simple_pl.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_pl/simple_pl_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_pl/simple_pl_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_pl/simple_pl_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/simple_pl/simple_pl_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{simple\_pl}}\label{tbl:myLboro}
-\end{table}
-
-
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | c |}
-    \hline
-    path & const 0.6 gamma 2 & const 0.3 gamma 2 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/subdiv_al/subdiv_al.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/subdiv_al/subdiv_al_disney.jpg}
-    \end{minipage}
-    & 
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/subdiv_al/subdiv_al_disney_dc03.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-\end{table}
-\begin{table}[ht]
-  \centering
-  \begin{tabular}{ | c | c | }
-    \hline
-    const 0.6 gamma 1 & const 0.3 gamma 1 \\ \hline
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/subdiv_al/subdiv_al_disney_dc03_dg1.jpg}
-    \end{minipage}
-    &
-    \begin{minipage}{.3\textwidth}
-      \includegraphics[scale=0.1]{img/obj/subdiv_al/subdiv_al_disney_dg1.jpg}
-    \end{minipage}
-    \\ \hline
-  \end{tabular}
-  \caption{\textit{subdiv\_al}}\label{tbl:myLboro}
-\end{table}
 
 
 \section{Other libraries}

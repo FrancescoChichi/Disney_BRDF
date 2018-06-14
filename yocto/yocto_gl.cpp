@@ -919,7 +919,7 @@ namespace ygl {
     }
 
     inline vec3f eval_diffuse_disney(const vec3f& kd, float cosw, float rs = 0.0){
-      auto FD90 = 0.5f + 2*(cosw*cosw)*rs;// ks/pif +
+      auto FD90 = 0.5f + 2*(cosw*cosw)*rs;
       auto fks_disney = kd/pif * vec3f{(1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f)) * (1.0f + (FD90 - 1.0f)*pow((FD90 - 1.0f), 5.0f))};
       return fks_disney;
     }
@@ -1001,6 +1001,7 @@ namespace ygl {
       auto& fr = pt.fr;
       auto& wn = pt.frame.z;
       auto& wo = pt.wo;
+
       // exit if not needed
       if (!fr) return zero3f;
 
