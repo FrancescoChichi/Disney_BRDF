@@ -1,0 +1,8 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {2}Bidirectional reflectance distribution function (BRDF)}{2}
+\contentsline {section}{\numberline {3}Disney BRDF}{3}
+\contentsline {subsection}{\numberline {3.1}Diffuse model}{3}
+\contentsline {subsection}{\numberline {3.2}Specular D}{4}
+\contentsline {subsection}{\numberline {3.3}Specular F}{5}
+\contentsline {subsection}{\numberline {3.4}Specular G}{5}
+\contentsline {subsection}{\numberline {3.5}Yocto/GL Implementation}{5}
